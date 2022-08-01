@@ -1,6 +1,8 @@
 package Exercise04.Exercise04;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -10,6 +12,8 @@ import javax.swing.JTextArea;
 public class MyEventsApp extends JFrame {
 	
 	JTextArea textArea;
+	boolean gate = true;
+	int resized = 2;
 
 	private JPanel contentPane;
 
@@ -17,41 +21,72 @@ public class MyEventsApp extends JFrame {
 	 * Create the frame.
 	 */
 	public MyEventsApp() {
+		// creates the main panel 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 561, 356);
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
-		JLabel lblEvents = new JLabel("Events");
-		lblEvents.setBounds(10, 143, 45, 13);
+		// creates a window listener
+		WindowListener wl = new WindowListener() {
+			
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void windowIconified(WindowEvent e) {
+				textArea.setText(textArea.getText()+"WINDOW POPS AGAIN!\n");
+				
+			}
+			
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void windowClosing(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void windowClosed(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void windowActivated(WindowEvent e) {
+				if (gate)
+					textArea.setText(textArea.getText()+"WINDOW ACTIVATED!\n");
+				gate = false;
+				
+			}
+		};
+		
+		 addComponentListener(new java.awt.event.ComponentAdapter() {
+	            public void componentResized(java.awt.event.ComponentEvent evt) {
+	            	if(resized <= 0)
+	            		textArea.setText(textArea.getText()+"WINDOW RESIZED!\n");
+	            	resized--;
+	            }
+	        });
+		
+		JLabel lblEvents = new JLabel("Activated, hidden and resized WINDOW monitoring");
+		lblEvents.setBounds(30, 27, 496, 13);
 		contentPane.add(lblEvents);
 		
 		textArea = new JTextArea();
-		textArea.setBounds(71, 49, 432, 207);
+		textArea.setEditable(false);
+		textArea.setBounds(30, 49, 473, 207);
+		addWindowListener(wl);
 		contentPane.add(textArea);
 			
-
-	}
-	
-	public void actionPerformed(ActionEvent e){
-		int key = e.getID();
-		
-		if(key == ActionEvent.WINDOW_EVENT_MASK) {
-			textArea.setText("window event mask");
-		}else if (key == ActionEvent.WINDOW_FOCUS_EVENT_MASK) {
-			textArea.setText("window focus event mask");
-		}else if (key == ActionEvent.WINDOW_STATE_EVENT_MASK) {
-			textArea.setText("window state event mask");
-		}else if (key == ActionEvent.MOUSE_EVENT_MASK){
-			textArea.setText("mouse event mask");
-		}else if (key == ActionEvent.MOUSE_MOTION_EVENT_MASK) {
-			textArea.setText("mouse motion event mask");
-		}else if (key == ActionEvent.MOUSE_WHEEL_EVENT_MASK) {
-			textArea.setText("mouse wheel event mask");
-		};	  
-
-	
 
 	}
 	
