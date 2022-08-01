@@ -1,8 +1,9 @@
-package Exercice07.Grafica;
+package Exercice08.Grafica;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.DecimalFormat;
 
 import javax.swing.JFrame;
@@ -11,9 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JToggleButton;
 
-public class CalculadoraMonedas extends JFrame {
+public class CalculadoraMonedas extends JFrame{
 
 	private JPanel contentPane;
 	JTextField tFieldCantidad;
@@ -26,11 +26,12 @@ public class CalculadoraMonedas extends JFrame {
 	//Boleano para el control del tipo de moneda de cambio
 	boolean cambio = true;
 	JButton btnEP;
-
-	private JLabel lblEuro;
-	private JLabel lblPts;
 	
 	DecimalFormat formato1 = new DecimalFormat("0.00");
+	private JButton btnDelete;
+	JButton btnCambiar;
+	private JLabel lblEuro;
+	private JLabel lblPts;
 	/**
 	 * Create the frame.
 	 */
@@ -51,6 +52,33 @@ public class CalculadoraMonedas extends JFrame {
 		tFieldCantidad.setBounds(94, 72, 86, 20);
 		contentPane.add(tFieldCantidad);
 		tFieldCantidad.setColumns(10);
+		
+		//Evento de teclado sobre la tecla enter
+		KeyListener kl1 = new KeyListener() {
+			
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void keyPressed(KeyEvent e) {
+				if (KeyEvent.VK_ENTER==e.getKeyCode()){
+					if (cambio) {
+						String resultado = cambiarPta(tFieldCantidad);
+						tFieldResultado.setText(resultado);
+					}else {
+						String resultado = cambiarEuro(tFieldCantidad);
+						tFieldResultado.setText(resultado);
+					}
+				}
+			}
+		};
+		tFieldCantidad.addKeyListener(kl1);
 		
 		JLabel lblResultado = new JLabel("Resultado");
 		lblResultado.setHorizontalAlignment(SwingConstants.CENTER);
@@ -79,10 +107,11 @@ public class CalculadoraMonedas extends JFrame {
 			}
 		});
 		
+		btnEP.addKeyListener(kl1);
 		contentPane.add(btnEP);
 		
 		//Boton para hacer el cambio de moneda
-		JButton btnCambiar = new JButton("Cambiar");
+		btnCambiar = new JButton("Cambiar");
 		btnCambiar.setBounds(233, 135, 89, 23);
 		btnCambiar.addActionListener(new ActionListener() {
 			
@@ -100,6 +129,18 @@ public class CalculadoraMonedas extends JFrame {
 		});
 		
 		contentPane.add(btnCambiar);
+		
+		btnDelete = new JButton("Borrar");
+		btnDelete.setBounds(173, 179, 89, 23);
+		btnDelete.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				tFieldCantidad.setText("");
+				tFieldResultado.setText("");
+			}
+		});
+		
+		contentPane.add(btnDelete);
 		
 		lblEuro = new JLabel("€");
 		lblEuro.setBounds(190, 75, 46, 14);
