@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class CalculadoraMonedas extends JFrame{
+public class CalculadoraMonedas extends JFrame implements KeyListener,ActionListener{
 
 	private JPanel contentPane;
 	JTextField tFieldCantidad;
@@ -52,33 +52,7 @@ public class CalculadoraMonedas extends JFrame{
 		tFieldCantidad.setBounds(94, 72, 86, 20);
 		contentPane.add(tFieldCantidad);
 		tFieldCantidad.setColumns(10);
-		
-		//Evento de teclado sobre la tecla enter
-		KeyListener kl1 = new KeyListener() {
-			
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			public void keyPressed(KeyEvent e) {
-				if (KeyEvent.VK_ENTER==e.getKeyCode()){
-					if (cambio) {
-						String resultado = cambiarPta(tFieldCantidad);
-						tFieldResultado.setText(resultado);
-					}else {
-						String resultado = cambiarEuro(tFieldCantidad);
-						tFieldResultado.setText(resultado);
-					}
-				}
-			}
-		};
-		tFieldCantidad.addKeyListener(kl1);
+		tFieldCantidad.addKeyListener(this);
 		
 		JLabel lblResultado = new JLabel("Resultado");
 		lblResultado.setHorizontalAlignment(SwingConstants.CENTER);
@@ -93,52 +67,22 @@ public class CalculadoraMonedas extends JFrame{
 		//Boton para cambiar el tipo de moneda de cambio
 		btnEP = new JButton("Euros a ptas");
 		btnEP.setBounds(94, 135, 118, 23);
-		btnEP.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				//Cambio el estado del booleano para cambiar el tipo de moneda de cambio
-				//Setteo el texto del boton
-				if (cambio) {
-					euros();
-				}else {
-					pesetas();
-				}
-				
-			}
-		});
-		
-		btnEP.addKeyListener(kl1);
+		btnEP.setActionCommand("cambiarMoneda");
+		btnEP.addActionListener(this);
+		btnEP.addKeyListener(this);
 		contentPane.add(btnEP);
 		
 		//Boton para hacer el cambio de moneda
 		btnCambiar = new JButton("Cambiar");
 		btnCambiar.setBounds(233, 135, 89, 23);
-		btnCambiar.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				//Con un booleano guardo el tipo de cambio que estoy haciendo y llamo a uno u otro metodo
-				if (cambio) {
-					String resultado = cambiarPta(tFieldCantidad);
-					tFieldResultado.setText(resultado);
-				}else {
-					String resultado = cambiarEuro(tFieldCantidad);
-					tFieldResultado.setText(resultado);
-				}
-				
-			}
-		});
-		
+		btnCambiar.setActionCommand("hacerCambio");
+		btnCambiar.addActionListener(this);
 		contentPane.add(btnCambiar);
 		
 		btnDelete = new JButton("Borrar");
 		btnDelete.setBounds(173, 179, 89, 23);
-		btnDelete.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				tFieldCantidad.setText("");
-				tFieldResultado.setText("");
-			}
-		});
+		btnDelete.setActionCommand("borrar");
+		btnDelete.addActionListener(this);
 		
 		contentPane.add(btnDelete);
 		
@@ -150,6 +94,8 @@ public class CalculadoraMonedas extends JFrame{
 		lblPts.setBounds(339, 75, 46, 14);
 		contentPane.add(lblPts);
 	}
+	
+	
 	
 	//Conversor de euros a pesetas
 	public String cambiarPta (JTextField cantidad) {
@@ -184,5 +130,52 @@ public class CalculadoraMonedas extends JFrame{
 		btnEP.setText("Euros a Ptas");
 		lblEuro.setText("€");
 		lblPts.setText("Pts");
+	}
+
+	//Metodos que controlan las actions del teclado
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void keyPressed(KeyEvent e) {
+		//Cuando se presiona ENTER hacer la funcion del boton de cambiar
+		if (KeyEvent.VK_ENTER==e.getKeyCode()){
+			if (cambio) {
+				String resultado = cambiarPta(tFieldCantidad);
+				tFieldResultado.setText(resultado);
+			}else {
+				String resultado = cambiarEuro(tFieldCantidad);
+				tFieldResultado.setText(resultado);
+			}
+		}
+	}
+
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	//Metodo que controla la action de los botones
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("hacerCambio".equals(e.getActionCommand())) {
+			if (cambio) {
+				String resultado = cambiarPta(tFieldCantidad);
+				tFieldResultado.setText(resultado);
+			}else {
+				String resultado = cambiarEuro(tFieldCantidad);
+				tFieldResultado.setText(resultado);
+			}
+		}else if ("cambiarMoneda".equals(e.getActionCommand())) {
+			if (cambio) {
+				euros();
+			}else {
+				pesetas();
+			}
+		}else if ("borrar".equals(e.getActionCommand())) {
+			tFieldCantidad.setText("");
+			tFieldResultado.setText("");
+		}
 	}
 }
