@@ -11,7 +11,7 @@ public class AplicacionGrafica extends JFrame {
 	public AplicacionGrafica() {
 		
 		// Anadimos un titulo al programa
-		setTitle("Exercice 01");
+		setTitle("Exercice 02");
 		
 		// Coordenadas x y  de la aplicacion
 		setBounds(400, 200, 275, 132);
