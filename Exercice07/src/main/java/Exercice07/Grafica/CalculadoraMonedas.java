@@ -26,6 +26,9 @@ public class CalculadoraMonedas extends JFrame {
 	//Boleano para el control del tipo de moneda de cambio
 	boolean cambio = true;
 	JButton btnEP;
+
+	private JLabel lblEuro;
+	private JLabel lblPts;
 	
 	DecimalFormat formato1 = new DecimalFormat("0.00");
 	/**
@@ -97,6 +100,14 @@ public class CalculadoraMonedas extends JFrame {
 		});
 		
 		contentPane.add(btnCambiar);
+		
+		lblEuro = new JLabel("€");
+		lblEuro.setBounds(190, 75, 46, 14);
+		contentPane.add(lblEuro);
+		
+		lblPts = new JLabel("Pts");
+		lblPts.setBounds(339, 75, 46, 14);
+		contentPane.add(lblPts);
 	}
 	
 	//Conversor de euros a pesetas
@@ -123,10 +134,14 @@ public class CalculadoraMonedas extends JFrame {
 	public void euros() {
 		cambio = false;
 		btnEP.setText("Ptas a euros");
+		lblEuro.setText("Pts");
+		lblPts.setText("€");
 	}
 	
 	public void pesetas() {
 		cambio = true;
 		btnEP.setText("Euros a Ptas");
+		lblEuro.setText("€");
+		lblPts.setText("Pts");
 	}
 }
