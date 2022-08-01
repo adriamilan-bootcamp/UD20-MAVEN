@@ -1,13 +1,11 @@
 package Exercice01.Exercice01;
+import Exercice01.Grafica.Grafica;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	// Llamamos a la aplicacion grafica
+    	Grafica window = new Grafica();
     }
 }
