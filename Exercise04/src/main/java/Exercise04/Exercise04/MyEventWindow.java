@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 
-public class MyEventsApp extends JFrame {
+public class MyEventWindow extends JFrame {
 	
 	JTextArea textArea;
 	boolean gate = true;
@@ -20,7 +20,7 @@ public class MyEventsApp extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MyEventsApp() {
+	public MyEventWindow() {
 		// creates the main panel 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 561, 356);

@@ -15,7 +15,7 @@ public class MainApp
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyEventsApp frame = new MyEventsApp();
+					MyEventWindow frame = new MyEventWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
