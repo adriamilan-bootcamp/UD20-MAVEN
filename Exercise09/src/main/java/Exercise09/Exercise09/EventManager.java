@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 
 import org.w3c.dom.events.MouseEvent;
@@ -23,6 +24,8 @@ public class EventManager implements ActionListener,MouseListener{
 	boolean segundo = false;
 	JToggleButton[] buttons = new JToggleButton[2];
 	public int[] numbers;
+	
+	private int numParejas=0;
 	
 	public EventManager(GameCouples gc) {
 		this.gc = gc;
@@ -53,6 +56,9 @@ public class EventManager implements ActionListener,MouseListener{
 	public void mouseExited(java.awt.event.MouseEvent e) {
 		// TODO Auto-generated method stub
 		compare();
+		if (numParejas == 8) {
+			JOptionPane.showMessageDialog(gc, "Bien, has encontrado todas las parejas");
+		}
 	}
 	
 	public void saveButtons(JToggleButton btn) {
@@ -78,6 +84,7 @@ public class EventManager implements ActionListener,MouseListener{
 			}else {
 				buttons[0].setVisible(false);
 				buttons[1].setVisible(false);
+				numParejas++;
 			}
 
 			segundo = false;
@@ -91,8 +98,7 @@ public class EventManager implements ActionListener,MouseListener{
 		int count = 0;
 		
 		while (count<16) {
-			Random rand = new Random();
-			int random = rand.nextInt((8-0)+1)+0;
+			int random = (int)Math.floor(Math.random()*9);
 			int num=0;
 			
 			for (int i = 0; i < 16; i++) {
