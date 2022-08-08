@@ -8,8 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JToggleButton;
 import java.awt.Color;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
-public class JuegoParejas extends JFrame {
+public class JuegoParejas extends JFrame{
 
 	private JPanel contentPane;
 
