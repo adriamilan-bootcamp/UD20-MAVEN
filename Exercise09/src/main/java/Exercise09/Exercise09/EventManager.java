@@ -7,7 +7,7 @@ import javax.swing.JToggleButton;
 
 public class EventManager implements ActionListener{
 	
-	GameCouples gc;
+	GameCouples gc = new GameCouples();
 	
 	
 	/**
