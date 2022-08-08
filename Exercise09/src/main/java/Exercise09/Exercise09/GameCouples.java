@@ -204,4 +204,58 @@ public class GameCouples extends JFrame {
 		tglbtn_D3.setBackground(colors[manager.numbers[14]-1]);
 		tglbtn_D4.setBackground(colors[manager.numbers[15]-1]);
 	}
+	
+	public void reiniciar() {
+		tglbtn_A1.setVisible(true);
+		tglbtn_A2.setVisible(true);
+		tglbtn_A3.setVisible(true);
+		tglbtn_A4.setVisible(true);
+		tglbtn_B1.setVisible(true);
+		tglbtn_B2.setVisible(true);
+		tglbtn_B3.setVisible(true);
+		tglbtn_B4.setVisible(true);
+		tglbtn_C1.setVisible(true);
+		tglbtn_C2.setVisible(true);
+		tglbtn_C3.setVisible(true);
+		tglbtn_C4.setVisible(true);
+		tglbtn_D1.setVisible(true);
+		tglbtn_D2.setVisible(true);
+		tglbtn_D3.setVisible(true);
+		tglbtn_D4.setVisible(true);
+		
+		tglbtn_A1.setSelected(true);
+		tglbtn_A2.setSelected(true);
+		tglbtn_A3.setSelected(true);
+		tglbtn_A4.setSelected(true);
+		tglbtn_B1.setSelected(true);
+		tglbtn_B2.setSelected(true);
+		tglbtn_B3.setSelected(true);
+		tglbtn_B4.setSelected(true);
+		tglbtn_C1.setSelected(true);
+		tglbtn_C2.setSelected(true);
+		tglbtn_C3.setSelected(true);
+		tglbtn_C4.setSelected(true);
+		tglbtn_D1.setSelected(true);
+		tglbtn_D2.setSelected(true);
+		tglbtn_D3.setSelected(true);
+		tglbtn_D4.setSelected(true);
+		
+		tglbtn_A1.setEnabled(true);
+		tglbtn_A2.setEnabled(true);
+		tglbtn_A3.setEnabled(true);
+		tglbtn_A4.setEnabled(true);
+		tglbtn_B1.setEnabled(true);
+		tglbtn_B2.setEnabled(true);
+		tglbtn_B3.setEnabled(true);
+		tglbtn_B4.setEnabled(true);
+		tglbtn_C1.setEnabled(true);
+		tglbtn_C2.setEnabled(true);
+		tglbtn_C3.setEnabled(true);
+		tglbtn_C4.setEnabled(true);
+		tglbtn_D1.setEnabled(true);
+		tglbtn_D2.setEnabled(true);
+		tglbtn_D3.setEnabled(true);
+		tglbtn_D4.setEnabled(true);
+		
+	}
 }

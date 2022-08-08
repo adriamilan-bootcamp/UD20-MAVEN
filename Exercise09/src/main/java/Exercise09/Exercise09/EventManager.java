@@ -109,8 +109,9 @@ public class EventManager implements ActionListener,MouseListener{
 	
 	public void initializeGame() {
 		colorSwitcher();
-		gc = new GameCouples();
-
+		gc.backGround();
+		gc.reiniciar();
+		numParejas = 0;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -118,7 +119,7 @@ public class EventManager implements ActionListener,MouseListener{
 		if(e.getSource() == gc.btnRestart) {
 			initializeGame();
 		}else {
-			JToggleButton btn = (JToggleButton)e.getSource();
+			JToggleButton btn = (JToggleButton) e.getSource();
 			saveButtons(btn);			
 		}
 	}
