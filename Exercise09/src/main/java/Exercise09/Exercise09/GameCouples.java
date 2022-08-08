@@ -6,6 +6,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import javax.swing.JButton;
 
 public class GameCouples extends JFrame {
 
@@ -28,13 +29,14 @@ public class GameCouples extends JFrame {
 	JToggleButton tglbtn_D2;
 	JToggleButton tglbtn_D3;
 	JToggleButton tglbtn_D4;
+	JButton btnRestart;
 	/**
 	 * Create the frame.
 	 */
 	public GameCouples() {
 		setTitle("GAME COUPLES");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 567, 521);
+		setBounds(100, 100, 567, 557);
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
@@ -172,6 +174,11 @@ public class GameCouples extends JFrame {
 		tglbtn_D4.setBounds(385, 342, 115, 100);
 		tglbtn_D4.addActionListener(manager);
 		panel.add(tglbtn_D4);
+		
+		btnRestart = new JButton("RESTART");
+		btnRestart.setBounds(229, 484, 85, 21);
+		btnRestart.addActionListener(manager);
+		contentPane.add(btnRestart);
 		
 		backGround();
 		

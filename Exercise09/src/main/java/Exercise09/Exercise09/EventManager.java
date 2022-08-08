@@ -106,12 +106,21 @@ public class EventManager implements ActionListener,MouseListener{
 		}
 		
 	}
+	
+	public void initializeGame() {
+		colorSwitcher();
+		gc = new GameCouples();
 
-	@Override
+	}
+
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		JToggleButton btn = (JToggleButton)e.getSource();
-		saveButtons(btn);
+		// TODO Auto-generated method stub		
+		if(e.getSource() == gc.btnRestart) {
+			initializeGame();
+		}else {
+			JToggleButton btn = (JToggleButton)e.getSource();
+			saveButtons(btn);			
+		}
 	}
 
 }
