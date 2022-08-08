@@ -1,20 +1,11 @@
 package Exercise09.Exercise09;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseListener;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Random;
 
-import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
-
-import org.w3c.dom.events.MouseEvent;
 
 public class EventManager implements ActionListener,MouseListener{
 
@@ -31,7 +22,6 @@ public class EventManager implements ActionListener,MouseListener{
 		this.gc = gc;
 		colorSwitcher();
 	}
-
 
 	public void mouseClicked(java.awt.event.MouseEvent e) {
 		// TODO Auto-generated method stub
