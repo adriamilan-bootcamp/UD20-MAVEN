@@ -110,7 +110,7 @@ public class EventManager implements ActionListener,MouseListener{
 	public void initializeGame() {
 		colorSwitcher();
 		gc.backGround();
-		gc.reiniciar();
+		gc.iniciar();
 		numParejas = 0;
 	}
 
