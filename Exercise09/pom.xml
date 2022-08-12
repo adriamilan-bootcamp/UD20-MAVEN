@@ -12,7 +12,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<<<<<<< HEAD
     <!--  Java Version 8 -->
+=======
+>>>>>>> branch 'main' of https://github.com/adriamilan-bootcamp/UD20-MAVEN
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>

@@ -15,12 +15,13 @@ public class MainApp
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JuegoParejas frame = new JuegoParejas();
+					GameCouples frame = new GameCouples();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+		
 	}
 }
